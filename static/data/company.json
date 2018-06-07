@@ -1,0 +1,98 @@
+{
+    "status": 1,
+    "msg": "操作成功",
+    "data": [
+    	{
+    		"adunnm": "平罗水务",
+    		"x": 536,
+    		"y": 112,
+    		"percent": 59.9
+    	},
+    	{
+    		"adunnm": "水投集团",
+    		"x": 500,
+    		"y": 196,
+    		"percent": null
+    	},
+    	{
+    		"adunnm": "宁工局",
+    		"x": 486,
+    		"y": 228,
+    		"percent": 4.2
+    	},
+    	{
+    		"adunnm": "沙坡头水利枢纽",
+    		"x": 456,
+    		"y": 240,
+    		"percent": null,
+    		"reverse": true
+    	},
+    	{
+    		"adunnm": "银川水务",
+    		"x": 432,
+    		"y": 210,
+    		"percent": null,
+    		"reverse": true
+    	},
+    	{
+    		"adunnm": "东水务、太阳山水务、长城水务、水投科技、西海固、国运租赁、阿曼",
+    		"x": 516,
+    		"y": 276,
+    		"percent": [null, -1.5, 0.1, null, null, null, null]
+    	},
+    	{
+    		"adunnm": "中阿万方",
+    		"x": 472,
+    		"y": 290,
+    		"percent": null
+    	},
+    	{
+    		"adunnm": "清水源",
+    		"x": 500,
+    		"y": 366,
+    		"percent": 118.3
+    	},
+    	{
+    		"adunnm": "中宁水务",
+    		"x": 346,
+    		"y": 408,
+    		"percent": 22.6
+    	},
+    	{
+    		"adunnm": "红寺堡水务",
+    		"x": 346,
+    		"y": 446,
+    		"percent": -3
+    	},
+    	{
+    		"adunnm": "水投环保",
+    		"x": 306,
+    		"y": 430,
+    		"percent": null
+    	},
+    	{
+    		"adunnm": "中卫水务",
+    		"x": 166,
+    		"y": 462,
+    		"percent": null
+    	},
+    	{
+    		"adunnm": "中源",
+    		"x": 402,
+    		"y": 576,
+    		"percent": 46.8
+    	},
+    	{
+    		"adunnm": "六盘山",
+    		"x": 446,
+    		"y": 800,
+    		"percent": 12.4
+    	},
+    	{
+    		"adunnm": "中南部建设",
+    		"x": 456,
+    		"y": 836,
+    		"percent": null
+    	}
+	]
+}
