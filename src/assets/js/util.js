@@ -55,3 +55,10 @@ export function getCurrentValue(arr, key) {
   }
   return val
 }
+
+export function throttle(fn, context, time) {
+    clearTimeout(fn.tId)
+    fn.tId = setTimeout(function() {
+        fn.call(context)
+    }, time || 200)
+}

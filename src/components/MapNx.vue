@@ -3,9 +3,8 @@
     <img ref="map" class="m-nx-map" :src="getStaticPath('/static/img/map.png')" alt="map.png">
     <div class="tip" v-for="item in list" :style="getPosition(item)">
       <div class="iconWrap"><img :src="getIcon(item.percent)" alt=""></div>
-      <div class="des">
-        <h6>{{item.adunnm}}</h6>
-        <!-- <p>内容</p> -->
+      <div class="des" :class="getReverse(item.reverse)">
+        <div v-html="getTitle(item.adunnm)"></div>
       </div>
     </div>
   </div>
@@ -15,7 +14,7 @@
 import $ from 'jquery'
 import {getStaticPath} from '../assets/js/mixin'
 import * as api from '../assets/js/api'
-const normal = 1, abnormal = 2
+import {throttle} from '../assets/js/util'
 export default {
   name: 'MapNx',
   mixins: [getStaticPath],
@@ -25,6 +24,19 @@ export default {
     }
   },
   methods: {
+    getReverse(flag) {
+      return flag ? 'reverse' : ''
+    },
+    getTitle(title) {
+      if (title.indexOf('、') === -1) {
+        return title
+      } else {
+        let arr = title.split('、')
+        return arr.map((item) => {
+          return `<h6>${item}</h6>`
+        }).join('')
+      }
+    },
     getIcon(percent) {
       let icon1 = require('../assets/img/dw-1.png'),
           icon2 = require('../assets/img/dw-2.png'),
@@ -54,74 +66,91 @@ export default {
           return icon2
         }
       }
-      
     },
     getPosition(item) {
+      let imgOriginW = 763,
+          imgW = $(this.$refs.map).width(),
+          radio = imgW / imgOriginW
       return {
-        top: item.y * (540 / 785) + 'px',
-        left: item.x * (540 / 785) + 'px'
+        top: item.y * radio + 'px',
+        left: item.x * radio + 'px'
       }
     },
-    /*getWarnPosition(item) {
-      let imgOriginW = 1363,
-          imgOriginH = 2049,
-          whRadio = imgOriginW / imgOriginH,
-          imgW = $(this.$refs.map).width(),
-          imgH = imgW / whRadio
-          console.log(imgW, imgH)
-      let nx = {
-        jd: [104.2869, 107.6536],
-        wd: [35.2494, 39.8758]
-      }
-      
-      //图片内目标Y坐标=取绝对值（目标纬度-图片上边对应纬度）/取绝对值（图片下边纬度-图片上边对应纬度）*（图片的高度）
-      //图片内目标X坐标=取绝对值（目标经度-图片左边对应经度）/取绝对值（图片右边经度-图片左边对应经度）*（图片的宽度）
-      let top = Math.abs(item.lttd - nx.wd[1]) / Math.abs(nx.wd[0] - nx.wd[1]) * imgH - 40 + 'px',
-          left = Math.abs(item.lgtd - nx.jd[0]) / Math.abs(nx.jd[1] - nx.jd[0]) * imgW - 20 + 'px'
-      return {top, left}
-    },*/
     get_company() {
       api.get_company()
         .then((res) => {
           this.list = res
         })
+    },
+    addResizeEvent() {
+      let fn = function() {
+        this.$forceUpdate()
+      }
+      window.addEventListener('resize', () => {
+        throttle(fn, this)
+      }, false)
     }
   },
   created() {
     this.get_company()
+  },
+  mounted() {
+    this.addResizeEvent()
   }
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
+  @import "../assets/less/variable.less";
+  @import "../assets/less/tool.less";
   .MapNx {
     position: relative;
     display: inline-block;
     .tip {
       position: absolute;
+      cursor: pointer;
       .iconWrap {
         position: absolute;
         width: 16px;
-        height: 16px;
-        background-color: white;
-        border-radius: 50%;
-        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        z-index: 1;
       }
       .des {
-        margin-left: 20px;
+        position: absolute;
+        white-space: nowrap;
+        top: 24px;
+        left: 6px;
         background-color: white;
         padding: 5px 8px;
         border-radius: 4px;
-        text-align: center;
+        text-align: left;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-        white-space: nowrap;
+        font-size: 12px;
         h6 {
-          font-weight: bold;
           font-size: 12px;
         }
         p {
           font-size: 10px;
           white-space: nowrap;
+        }
+        &.reverse {
+          position: relative;
+          left: -100%;
+          margin-right: -10px;
+        }
+      }
+      &:hover {
+        z-index: 2;
+        .des {
+          background-color: @color-theme;
+          color: white;
+          font-size: 14px;
+          h6 {
+            font-size: 14px;
+          }
+        }
+        .iconWrap {
+          transform-origin: center bottom;
+          transform: scale(1.5);
         }
       }
     }

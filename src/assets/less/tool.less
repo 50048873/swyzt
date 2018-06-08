@@ -99,6 +99,17 @@
   border-style: dashed dashed dashed solid;
 }
 
+.sj-l(@w:12px, @c: red) { 
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
+}
+
 .sj-b(@w:12px, @c: #43c5ef) { 
   width: 0;
   height: 0;

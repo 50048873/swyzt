@@ -63,7 +63,7 @@ export default {
                 }
             },
             yAxis: {
-                min: 0,
+                min: null,
                 lineWidth: 1, // 轴线
                 // tickWidth: 1, // 刻度线
                 // gridLineWidth: 0, // 网格线

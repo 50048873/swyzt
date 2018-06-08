@@ -4,94 +4,99 @@
     "data": [
     	{
     		"adunnm": "平罗水务",
-    		"x": 536,
-    		"y": 112,
+    		"x": 506,
+    		"y": 152,
     		"percent": 59.9
     	},
     	{
     		"adunnm": "水投集团",
-    		"x": 500,
-    		"y": 196,
+    		"x": 454,
+    		"y": 254,
     		"percent": null
     	},
     	{
     		"adunnm": "宁工局",
-    		"x": 486,
-    		"y": 228,
-    		"percent": 4.2
+    		"x": 430,
+    		"y": 280,
+    		"percent": 4.2,
+            "reverse": true
     	},
     	{
     		"adunnm": "沙坡头水利枢纽",
-    		"x": 456,
-    		"y": 240,
+    		"x": 400,
+    		"y": 308,
     		"percent": null,
     		"reverse": true
     	},
     	{
     		"adunnm": "银川水务",
-    		"x": 432,
-    		"y": 210,
+    		"x": 394,
+    		"y": 272,
     		"percent": null,
     		"reverse": true
     	},
     	{
-    		"adunnm": "东水务、太阳山水务、长城水务、水投科技、西海固、国运租赁、阿曼",
-    		"x": 516,
-    		"y": 276,
+    		"adunnm": "宁东水务、太阳山水务、长城水务、水投科技、西海固、国运租赁、阿曼",
+    		"x": 478,
+    		"y": 290,
     		"percent": [null, -1.5, 0.1, null, null, null, null]
     	},
     	{
     		"adunnm": "中阿万方",
-    		"x": 472,
-    		"y": 290,
-    		"percent": null
+    		"x": 430,
+    		"y": 328,
+    		"percent": null,
+            "reverse": true
     	},
     	{
     		"adunnm": "清水源",
-    		"x": 500,
-    		"y": 366,
-    		"percent": 118.3
+    		"x": 480,
+    		"y": 380,
+    		"percent": 118.3,
+            "reverse": true
     	},
     	{
     		"adunnm": "中宁水务",
-    		"x": 346,
-    		"y": 408,
+    		"x": 324,
+    		"y": 498,
     		"percent": 22.6
     	},
     	{
     		"adunnm": "红寺堡水务",
-    		"x": 346,
-    		"y": 446,
+    		"x": 340,
+    		"y": 528,
     		"percent": -3
     	},
     	{
     		"adunnm": "水投环保",
     		"x": 306,
-    		"y": 430,
+    		"y": 524,
     		"percent": null
     	},
     	{
     		"adunnm": "中卫水务",
-    		"x": 166,
-    		"y": 462,
-    		"percent": null
+    		"x": 204,
+    		"y": 540,
+    		"percent": null,
+            "reverse": true
     	},
     	{
     		"adunnm": "中源",
-    		"x": 402,
-    		"y": 576,
+    		"x": 354,
+    		"y": 644,
     		"percent": 46.8
     	},
     	{
     		"adunnm": "六盘山",
-    		"x": 446,
-    		"y": 800,
-    		"percent": 12.4
+    		"x": 428,
+    		"y": 908,
+    		"percent": 12.4,
+            "reverse": true
     	},
     	{
     		"adunnm": "中南部建设",
-    		"x": 456,
-    		"y": 836,
+    		"x": 438,
+    		"y": 978,
     		"percent": null
     	}
 	]

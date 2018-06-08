@@ -8,4 +8,4 @@ export const success = 1
 // 出错
 export const error = 0
 
-export const baseUrl = 'http://localhost:8081'
+export const baseUrl = window.location.origin
