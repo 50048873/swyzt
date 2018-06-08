@@ -7,7 +7,7 @@
 	    	</div>
 	    </div>
 		<div class="cards">
-    		<card class="card ON" :percent="card1.percent" :iconCls="iconCls[0]">
+    		<card class="ON" :percent="card1.percent" :iconCls="iconCls[0]">
     			<template slot="titlePart">
     				<h3>
 			          <span>总资产</span>
@@ -21,7 +21,7 @@
 		        	<chart-money :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
 		        </template>
     		</card>
-    		<card class="card" :percent="card2.percent" :iconCls="iconCls[1]">
+    		<card :percent="card2.percent" :iconCls="iconCls[1]">
     			<template slot="titlePart">
     				<h3>
 			          <span>负债总额</span>
@@ -40,7 +40,7 @@
 		        	<chart-money :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
 		        </template>
     		</card>
-    		<card class="card" :percent="card3.percent" :iconCls="iconCls[2]">
+    		<card :percent="card3.percent" :iconCls="iconCls[2]">
     			<template slot="titlePart">
     				<h3>
 			          <span>净资产</span>
@@ -54,7 +54,7 @@
 		        	<chart-money :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
 		        </template>
     		</card>
-    		<card class="card" :percent="card4.percent" :iconCls="iconCls[3]">
+    		<card :percent="card4.percent" :iconCls="iconCls[3]">
     			<template slot="titlePart">
     				<h3>
 			          <span>营业总收入</span>
@@ -72,7 +72,7 @@
 		        	<chart-money :data="card4.list" v-if="card4.list.length"></chart-money>
 		        </template>
     		</card>
-    		<card class="card" :iconCls="iconCls[4]">
+    		<card :iconCls="iconCls[4]">
     			<template slot="titlePart">
     				<h3>
 			          <span>利润总额</span>
@@ -91,7 +91,7 @@
 		        	<chart-money :data="card5.list" v-if="card5.list.length"></chart-money>
 		        </template>
     		</card>
-    		<card class="card" :percent="card6.percent" :iconCls="iconCls[5]">
+    		<card :percent="card6.percent" :iconCls="iconCls[5]">
     			<template slot="titlePart">
     				<h3>
 			          <span>投资</span>
@@ -118,14 +118,14 @@
 	<div class="right m-content-right">
 		<tab :data="tabData" @tabChange="tabChange"></tab>
 		<div class="carts">
-			<card-two class="card" title="各分公司供水量（万吨）">
-				<chart-columnar-basic :data="card7.list" v-if="card7.list.length"></chart-columnar-basic>
+			<card-two title="各分公司供水量（万吨）">
+				<manage-chart7 :data="card7.list" :legend="card7.legend" v-if="card7.list.length"></manage-chart7>
 			</card-two>
-			<card-two class="card" title="利润总额分版块构成">
-				<chart-annular :data="card8.list" v-if="card8.list.length"></chart-annular>
+			<card-two title="利润总额分版块构成">
+				<manage-chart8 :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></manage-chart8>
 			</card-two>
-			<card-two class="card" title="各公司营业收入、净利润，计划完成率" height="400">
-				<chart-bar-basic :data="card9.list" v-if="card9.list.length"></chart-bar-basic>
+			<card-two title="各公司营业收入、净利润，计划完成率" height="400">
+				<manage-chart9 :data="card9.list" :legend="card9.legend" v-if="card9.list.length"></manage-chart9>
 			</card-two>
 		</div>
 	</div>
@@ -145,9 +145,9 @@
 	import Card from './Card'
 	import Tab from './Tab'
 	import CardTwo from './CardTwo'
-	import ChartColumnarBasic from './ChartColumnarBasic'
-	import ChartAnnular from './ChartAnnular'
-	import ChartBarBasic from './ChartBarBasic'
+	import ManageChart7 from './ManageChart7'
+	import ManageChart8 from './ManageChart8'
+	import ManageChart9 from './ManageChart9'
 	import {getStaticPath} from '../assets/js/mixin'
 	import MapNx from './MapNx'
 	import SelectYear from './SelectYear'
@@ -160,9 +160,9 @@
 	    	Card,
 	    	Tab,
 	    	CardTwo,
-	    	ChartColumnarBasic,
-	    	ChartAnnular,
-	    	ChartBarBasic,
+	    	ManageChart7,
+	    	ManageChart8,
+	    	ManageChart9,
 	    	MapNx,
 	    	SelectYear
 	    },
@@ -208,13 +208,16 @@
 		    		jhtz: ''
 	    		},
 	    		card7: {
-		    		list: []
+		    		list: [],
+		    		legend: true
 	    		},
 	    		card8: {
-		    		list: []
+		    		list: [],
+		    		legend: true
 	    		},
 	    		card9: {
-		    		list: []
+		    		list: [],
+		    		legend: true
 	    		}
 	    	}
 	    },

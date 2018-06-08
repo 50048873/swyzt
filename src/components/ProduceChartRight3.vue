@@ -11,6 +11,10 @@ export default {
     data: {
         type: Array,
         default: []
+    },
+    legend: {
+        type: Boolean,
+        default: false
     }
   },
   data() {
@@ -33,27 +37,30 @@ export default {
             },
             title: {
                 floating: true,
-                text: null, //圆中心文字
+                text: '供水比率', //圆中心文字
                 style: { "fontWeight": "bold", "fontSize": "12px" }
             },
             tooltip: {
                 headerFormat: '{series.name}<br>',
                 pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
             },
+            legend: {
+                enabled: _this.legend
+            },
             plotOptions: {
                 pie: {
-                    size: 180,
+                    size: 100,
                     innerSize: '60%',
                     showInLegend: true,
                     dataLabels: {
-                        enabled: false,
+                        enabled: true,
                         useHTML: true,
                         distance: 20,
-                        y: -10,
+                        // y: -10,
                         padding: 0,
                         verticalAlign: 'middle',
                         formatter : function() {  
-                            return "<div><p>"+this.point.name+"</p>"+this.percentage.toFixed(0)+"%</div>"; 
+                            return "<div>"+this.point.name+this.percentage.toFixed(0)+"%</div>"; 
                         }
                     }
                 },
@@ -99,6 +106,6 @@ export default {
 
 <style scoped lang="less">
     .highcharts-container {
-        height: 300px;
+        height: 50%;
     }
 </style>

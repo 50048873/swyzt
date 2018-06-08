@@ -6,11 +6,15 @@
 import Highcharts from 'highcharts/highstock';
 
 export default {
-  name: 'ChartColumnarBasic',
+  name: 'ChartBarBasic',
   props: {
     data: {
         type: Array,
         default: []
+    },
+    legend: {
+        type: Boolean,
+        default: false
     }
   },
   data() {
@@ -27,39 +31,27 @@ export default {
         let categories = [], seriesData = []
         // console.log(this.data)
         let obj1 = {
-                name: '年度供水目标',
+                name: '营业收入',
                 data: []
             }, 
             obj2 = {
-                name: '2017年1-10月供水量',
-                data: []
-            }, 
-            obj3 = {
-                name: '2017年10月供水量',
-                data: []
-            }, 
-            obj4 = {
-                name: '2016年1-10月供水量',
+                name: '利润总额',
                 data: []
             }
         this.data.forEach((item) => {
             obj1.data.push(item.y1)
             obj2.data.push(item.y2)
-            obj3.data.push(item.y3)
-            obj4.data.push(item.y4)
             categories.push(item.name)
         })
         seriesData.push(obj1)
         seriesData.push(obj2)
-        seriesData.push(obj3)
-        seriesData.push(obj4)
         // console.log(categories, seriesData)
         let options = {
             credits: {
-              enabled: false
+                enabled: false
             },
             chart: {
-                type: 'column'
+                type: 'bar'
             },
             title: {
                 text: null
@@ -68,40 +60,54 @@ export default {
                 text: null
             },
             xAxis: {
+                // tickWidth: 0, // 刻度线
                 categories: categories,
-                crosshair: true
+                title: {
+                    text: null
+                }
             },
             yAxis: {
                 min: 0,
-                lineWidth: 1,
+                lineWidth: 1, // 轴线
+                // tickWidth: 1, // 刻度线
+                // gridLineWidth: 0, // 网格线
                 title: {
                     text: null
+                },
+                labels: {
+                    overflow: 'justify'
                 }
             },
             tooltip: {
                 // head + 每个 point + footer 拼接成完整的 table
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}：</td>' +
-                '<td style="padding:0"><b>{point.y:.2f}万吨</b></td></tr>',
+                '<td style="padding:0"><b>{point.y:.2f}万元</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
             },
             plotOptions: {
-                column: {
-                    borderWidth: 0
+                bar: {
+                    dataLabels: {
+                        enabled: false, // 不显示图上数字
+                        allowOverlap: true // 允许数据标签重叠
+                    }
                 }
+            },
+            legend: { // 图例
+                enabled: _this.legend,
             },
             series: seriesData
         }
-      this.chart = new Highcharts.Chart(this.$el, options)
+        this.chart = new Highcharts.Chart(this.$el, options)
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-  .highcharts-container {
-    height: 300px;
-  }
+    .highcharts-container {
+        height: 50%;
+    }
 </style>

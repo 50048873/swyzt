@@ -9,7 +9,7 @@
           <progress-circle radius="70" :percent="percentToNumber">
             <span class="percent">{{percentToString}}</span>
           </progress-circle>
-          <span>同比增长</span>
+          <span class="percent-title">同比增长</span>
         </template>
       </div>
     </div>
@@ -59,16 +59,21 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     width: 270px;
-    // height: 170px;
+    min-height: 170px;
     box-sizing: border-box;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
     background-color: white;
     overflow: auto;
-     .top {
+    margin: 15px; 
+    padding: 10px;
+    .top {
       display: flex;
       .top-left {
         flex: 1;
         padding-right: 10px;
+        h3 {
+          margin-bottom: 6px;
+        }
       }
       .top-right {
         text-align: center;
@@ -79,20 +84,45 @@ export default {
           transform: translate(-50%, -50%);
           font-size: 12px;
         }
+        .percent-title {
+          display: inline-block;
+          line-height: 1;
+        }
       }
     }
     .bottom {
       display: flex;
       align-items: baseline;
+      margin-top: 10px;
       .icon-wrap {
         width: 60px;
+        height: 32px;
         font-size: 32px;
         color: @color-theme;
       }
       .chart {
         flex: 1;
-        height: 100px;
+        height: 60px;
       }
     } 
+    .totalMoney, .liabilityPercent {
+      margin-bottom: 6px;
+      .title {
+        margin-right: 6px;
+      }
+      .title, .strongCount {
+        font-weight: bold;
+      }
+      .strongCount {
+        display: inline-block;
+        padding: 5px 20px 5px 5px;
+        border-radius: 0 20px 20px 0;
+        min-width: 80px;
+        box-sizing: border-box;
+      }
+    }
+    &.ON {
+      border: 2px solid @color-theme;
+    }
   }
 </style>

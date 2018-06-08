@@ -5,3 +5,11 @@ export let getStaticPath = {
     }
   }
 };
+
+export let parseInt = {
+  methods: {
+    parseInt(val) { 
+      return parseInt(val)
+    }
+  }
+};

@@ -1,6 +1,6 @@
 <template>
   <section class="CardTwo">
-    <h3 class="title">{{title}}</h3>
+    <h3 class="title ellipsis" :title="title">{{title}}</h3>
     <div class="chart" :style="getHeight">
       <slot></slot>
     </div>
@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import {isString} from '@/assets/js/util'
 export default {
   name: 'CardTwo',
   props: {
@@ -21,7 +22,7 @@ export default {
     }
   },
   computed: {
-    getHeight() {
+    getHeight() { 
       let height = parseFloat(this.height) + 'px'
       return {
         height: height
@@ -36,6 +37,7 @@ export default {
   .CardTwo {
     background-color: white;
     padding: 10px;
+    margin-top: 10px;
     .title {
     	position: relative;
     	padding-left: 20px;
@@ -52,6 +54,9 @@ export default {
     		height: 14px;
     		background-color: @color-theme;
     	}
+    }
+    &:first-child {
+      margin-top: 0;
     }
   }
 </style>
