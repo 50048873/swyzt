@@ -1,5 +1,5 @@
 <template>
-  <section class="CustomerService">
+  <section class="layout-page">
 	<div class="left" :style="getBgImage()">
 		<div class="select-wrap">
 	    	<div class="search-year">
@@ -8,80 +8,38 @@
 	    </div>
 		<div class="cards">
     		<card class="ON" :percent="card1.percent" :iconCls="iconCls[0]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>应收实收水量（万方）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title">应收</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">实收</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
-		        </template>
+		        <card-title
+    				slot="titlePart"
+		        	title="应收实收水量（万方）"
+		        	subTitle1="应收"
+		        	:value1="card1.currentValue"
+		        	subTitle2="实收"
+		        	:value2="card1.currentValue">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
     		</card>
     		<card :percent="card2.percent" :iconCls="iconCls[1]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>应收实收消费</span>
-			          <span>（万元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title">应收</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card2.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">实收</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{card2.fzl}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
-		        </template>
+		        <card-title
+    				slot="titlePart"
+		        	title="应收实收消费（万元）"
+		        	subTitle1="应收"
+		        	:value1="card2.currentValue"
+		        	subTitle2="实收"
+		        	:value2="card2.fzl">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
     		</card>
     		<card :iconCls="iconCls[2]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>欠费</span>
-			          <span>（万元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card3.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
-		        </template>
+		        <card-title slot="titlePart" title="欠费（万元）" :value1="card3.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
     		</card>
     		<card-three :iconCls="iconCls[3]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>用水结构占比</span>
-			          <span>（百分比）</span>
-			        </h3>
-		        </template>
-		        <template slot="chartPart">
-		        	<customer-service-chart-left4 :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></customer-service-chart-left4>
-		        </template>
+		        <card-title slot="titlePart" title="用水结构占比（百分比）"></card-title>
+		        <customer-service-chart-left4 slot="chartPart" :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></customer-service-chart-left4>
     		</card-three>
     		<card-three :iconCls="iconCls[4]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>用水户数</span>
-			          <span>（万户）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card5.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<customer-service-chart-left5 :data="card5.list" v-if="card5.list.length"></customer-service-chart-left5>
-		        </template>
+		        <card-title slot="titlePart" title="用水户数（万户）" :value1="card5.currentValue"></card-title>
+		        <customer-service-chart-left5 slot="chartPart" :data="card5.list" v-if="card5.list.length"></customer-service-chart-left5>
     		</card-three>
 		</div>
 		<div class="map-wrap">
@@ -91,22 +49,22 @@
 	<div class="right m-content-right">
 		<tab :data="tabData" @tabChange="tabChange"></tab>
 		<div class="carts">
-			<card-two title="集团售水收入" height="150">
+			<card-two title="集团售水收入（万元）" height="150">
 				<customer-service-chart-left6 :data="card5.list" v-if="card5.list.length"></customer-service-chart-left6>
 			</card-two>
 			<card-two title="分公司售水收入分析" height="150">
 				<customer-service-chart-left7 :data="card9.list" v-if="card9.list.length"></customer-service-chart-left7>
 			</card-two>
-			<card-two title="客户报修" height="150">
+			<card-two title="客户报修（次）" height="150">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
-			<card-two title="客户热线" height="150">
+			<card-two title="客户热线（次）" height="150">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
-			<card-two title="客户投诉" height="150">
+			<card-two title="客户投诉（次）" height="150">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
-			<card-two title="抄表（应抄、实抄）" height="150">
+			<card-two title="抄表（应抄、实抄）（%）" height="150">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
 		</div>
@@ -127,6 +85,7 @@
 	import Card from './Card'
 	import Tab from './Tab'
 	import CardTwo from './CardTwo'
+	import CardTitle from './CardTitle'
 	import CardThree from './CardThree'
 	import ProduceChartRight1 from './ProduceChartRight1'
 	import CustomerServiceChartLeft4 from './CustomerServiceChartLeft4'
@@ -143,6 +102,7 @@
 	    components: {
 	    	ChartMoney,
 	    	Card,
+	    	CardTitle,
 	    	Tab,
 	    	CardTwo,
 	    	CardThree,
@@ -213,7 +173,7 @@
 	    	selectChange(newVal) {
 	    		this.curDate = newVal
 	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = parseInt(newVal) - 1
+	    		this.tabData[1].title = newVal - 1
 	    		this.card1.list = []
 	    		this.card2.list = []
 	    		this.card3.list = []
@@ -360,51 +320,3 @@
 	    }
 	}
 </script>
-
-<style scoped lang="less">
-	@import "../assets/less/variable.less";
-	.CustomerService {
-		display: flex;
-		.left {
-			display: flex;
-			flex: 1;
-			margin-right: 10px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-			position: relative;
-			.select-wrap {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				.search-year {
-					width: 120px;
-				}
-			}
-			.cards {
-			}
-			.map-wrap {
-				flex: 1;
-				text-align: center;
-				margin-top: 60px;
-			}
-		}
-		.right {
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-between;
-			.carts {
-				// flex: 1;
-				// display: flex;
-			    // flex-direction: column;
-			    // justify-content: space-between;
-			    .card {
-			    	margin-top: 10px;
-			    	&:first-child {
-			    		margin-top: 0;
-			    	}
-			    }
-			}
-		}
-	}
-</style>

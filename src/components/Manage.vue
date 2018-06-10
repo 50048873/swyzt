@@ -1,5 +1,5 @@
 <template>
-  <section class="Manage">
+  <section class="layout-page">
 	<div class="left" :style="getBgImage()">
 		<div class="select-wrap">
 	    	<div class="search-year">
@@ -8,107 +8,55 @@
 	    </div>
 		<div class="cards">
     		<card class="ON" :percent="card1.percent" :iconCls="iconCls[0]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>总资产</span>
-			          <span>（亿元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="总资产（亿元）" :value1="card1.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
     		</card>
     		<card :percent="card2.percent" :iconCls="iconCls[1]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>负债总额</span>
-			          <span>（亿元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title">总　额</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card2.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">负债率</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{card2.fzl}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
-		        </template>
+    			<card-title
+    				slot="titlePart"
+		        	title="负债总额（亿元）"
+		        	subTitle1="总　额"
+		        	:value1="card2.currentValue"
+		        	subTitle2="负债率"
+		        	:value2="card2.fzl">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
     		</card>
     		<card :percent="card3.percent" :iconCls="iconCls[2]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>净资产</span>
-			          <span>（亿元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card3.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="净资产（亿元）" :value1="card3.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
     		</card>
     		<card :percent="card4.percent" :iconCls="iconCls[3]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>营业总收入</span>
-			          <span>（万元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card4.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">完成率</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card4.yyzsrtbzz}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card4.list" v-if="card4.list.length"></chart-money>
-		        </template>
+    			<card-title
+    				slot="titlePart"
+		        	title="营业总收入（万元）"
+		        	:value1="card4.currentValue"
+		        	subTitle2="同比增长"
+		        	:value2="card4.yyzsrtbzz">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card4.list" v-if="card4.list.length"></chart-money>
     		</card>
     		<card :iconCls="iconCls[4]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>利润总额</span>
-			          <span>（万元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title">总　额</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card5.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">净利润</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{card5.jlr}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card5.list" v-if="card5.list.length"></chart-money>
-		        </template>
+    			<card-title
+    				slot="titlePart"
+		        	title="利润总额（万元）"
+		        	subTitle1="总　额"
+		        	:value1="card5.currentValue"
+		        	subTitle2="净利润"
+		        	:value2="card5.jlr">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card5.list" v-if="card5.list.length"></chart-money>
     		</card>
     		<card :percent="card6.percent" :iconCls="iconCls[5]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>投资</span>
-			          <span>（万元）</span>
-			        </h3>
-	    			<div class="totalMoney">
-	    			  <span class="title">完成</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card6.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">计划</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{card6.jhtz}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card6.list" v-if="card6.list.length"></chart-money>
-		        </template>
+    			<card-title
+    				slot="titlePart"
+		        	title="投资（万元）"
+		        	subTitle1="完成"
+		        	:value1="card6.currentValue"
+		        	subTitle2="计划"
+		        	:value2="card6.jhtz">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card6.list" v-if="card6.list.length"></chart-money>
     		</card>
 		</div>
 		<div class="map-wrap">
@@ -118,13 +66,13 @@
 	<div class="right m-content-right">
 		<tab :data="tabData" @tabChange="tabChange"></tab>
 		<div class="carts">
-			<card-two title="各分公司供水量（万吨）">
+			<card-two title="各分公司供水量（万吨）" height="350">
 				<manage-chart7 :data="card7.list" :legend="card7.legend" v-if="card7.list.length"></manage-chart7>
 			</card-two>
-			<card-two title="利润总额分版块构成">
+			<card-two title="利润总额分版块构成" height="350">
 				<manage-chart8 :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></manage-chart8>
 			</card-two>
-			<card-two title="各公司营业收入、净利润，计划完成率" height="400">
+			<card-two title="各公司营业收入、净利润，计划完成率" height="380">
 				<manage-chart9 :data="card9.list" :legend="card9.legend" v-if="card9.list.length"></manage-chart9>
 			</card-two>
 		</div>
@@ -143,6 +91,7 @@
 	]
 	import ChartMoney from './ChartMoney'
 	import Card from './Card'
+	import CardTitle from './CardTitle'
 	import Tab from './Tab'
 	import CardTwo from './CardTwo'
 	import ManageChart7 from './ManageChart7'
@@ -158,6 +107,7 @@
 	    components: {
 	    	ChartMoney,
 	    	Card,
+	    	CardTitle,
 	    	Tab,
 	    	CardTwo,
 	    	ManageChart7,
@@ -225,7 +175,7 @@
 	    	selectChange(newVal) {
 	    		this.curDate = newVal
 	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = parseInt(newVal) - 1
+	    		this.tabData[1].title = newVal - 1
 	    		this.card1.list = []
 	    		this.card2.list = []
 	    		this.card3.list = []
@@ -372,81 +322,3 @@
 	    }
 	}
 </script>
-
-<style scoped lang="less">
-	@import "../assets/less/variable.less";
-	.Manage {
-		display: flex;
-		.left {
-			display: flex;
-			flex: 1;
-			margin-right: 10px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-			position: relative;
-			.select-wrap {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				.search-year {
-					width: 120px;
-				}
-			}
-			.cards {
-				.card {
-					margin: 15px; 
-					padding: 10px;
-					&.ON {
-				      border: 2px solid @color-theme;
-				    }
-				    h3 {
-				    	margin-bottom: 6px;
-				    }
-				    .totalMoney, .liabilityPercent {
-				    	margin-bottom: 6px;
-				    	.title {
-				    		margin-right: 6px;
-				    	}
-						.title, .strongCount {
-				    		font-weight: bold;
-				    	}
-				    	.strongCount {
-							display: inline-block;
-						    padding: 5px 20px 5px 5px;
-						    border-radius: 0 20px 20px 0;
-						    min-width: 80px;
-							box-sizing: border-box;
-				    	}
-				    }
-				    .totalMoney {
-				    	
-				    	
-				    }
-				}
-			}
-			.map-wrap {
-				flex: 1;
-				text-align: center;
-				margin-top: 60px;
-			}
-		}
-		.right {
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-between;
-			.carts {
-				// flex: 1;
-				// display: flex;
-			    // flex-direction: column;
-			    // justify-content: space-between;
-			    .card {
-			    	margin-top: 10px;
-			    	&:first-child {
-			    		margin-top: 0;
-			    	}
-			    }
-			}
-		}
-	}
-</style>

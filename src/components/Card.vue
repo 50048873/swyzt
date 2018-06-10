@@ -9,7 +9,7 @@
           <progress-circle radius="70" :percent="percentToNumber">
             <span class="percent">{{percentToString}}</span>
           </progress-circle>
-          <span class="percent-title">同比增长</span>
+          <span class="percent-title">{{percentTitle}}</span>
         </template>
       </div>
     </div>
@@ -35,6 +35,10 @@ export default {
     percent: {
       type: [String, Number],
       default: ''
+    },
+    percentTitle: {
+      type: String,
+      default: '同比增长'
     },
     iconCls: {
       type: String,
@@ -76,6 +80,8 @@ export default {
         }
       }
       .top-right {
+        transform: scale(0.9);
+        transform-origin: top center;
         text-align: center;
         .percent {
           position: absolute;
@@ -93,7 +99,7 @@ export default {
     .bottom {
       display: flex;
       align-items: baseline;
-      margin-top: 10px;
+      // margin-top: 10px;
       .icon-wrap {
         width: 60px;
         height: 32px;
@@ -102,25 +108,9 @@ export default {
       }
       .chart {
         flex: 1;
-        height: 60px;
+        height: 50px;
       }
     } 
-    .totalMoney, .liabilityPercent {
-      margin-bottom: 6px;
-      .title {
-        margin-right: 6px;
-      }
-      .title, .strongCount {
-        font-weight: bold;
-      }
-      .strongCount {
-        display: inline-block;
-        padding: 5px 20px 5px 5px;
-        border-radius: 0 20px 20px 0;
-        min-width: 80px;
-        box-sizing: border-box;
-      }
-    }
     &.ON {
       border: 2px solid @color-theme;
     }

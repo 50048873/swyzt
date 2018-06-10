@@ -1,7 +1,7 @@
 <template>
-  <section class="CardTwo">
+  <section class="CardTwo" :style="getHeight">
     <h3 class="title ellipsis" :title="title">{{title}}</h3>
-    <div class="chart" :style="getHeight">
+    <div class="chart">
       <slot></slot>
     </div>
   </section>
@@ -38,22 +38,30 @@ export default {
     background-color: white;
     padding: 10px;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
     .title {
     	position: relative;
     	padding-left: 20px;
     	vertical-align: top;
-    	line-height: 1.5;
+    	line-height: 1;
     	margin-top: 5px;
-    	margin-bottom: 15px;
+    	margin-bottom: 10px;
+      flex: 0 0 14px;
     	&:before {
     		content: '';
     		position: absolute;
-        top: 3px;
+        top: 0;
     		left: 0;
     		width: 14px;
     		height: 14px;
     		background-color: @color-theme;
     	}
+    }
+    .chart {
+      flex: 1;
     }
     &:first-child {
       margin-top: 0;

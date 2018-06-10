@@ -1,5 +1,5 @@
 <template>
-  <section class="Pipe">
+  <section class="layout-page">
 	<div class="left" :style="getBgImage()">
 		<div class="select-wrap">
 	    	<div class="search-year">
@@ -8,78 +8,38 @@
 	    </div>
 		<div class="cards">
     		<card class="ON" :percent="card1.percent" :iconCls="iconCls[0]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>官网</span>
-			          <span>（公里）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
-		        </template>
+		        <card-title slot="titlePart" title="官网（公里）" :value1="card1.currentValue"></card-title>
+		        <chart-money :data="card1.list" slot="chartPart" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
     		</card>
     		<card-three :iconCls="iconCls[1]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>管材类别</span>
-			          <span>（%）</span>
-			        </h3>
-		        </template>
-		        <template slot="chartPart">
-		        	<customer-service-chart-left4 :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></customer-service-chart-left4>
-		        </template>
+		        <card-title slot="titlePart" title="管材类别（%）"></card-title>
+		        <customer-service-chart-left4 slot="chartPart" :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></customer-service-chart-left4>
     		</card-three>
     		<card-three :iconCls="iconCls[2]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>管径类别</span>
-			          <span>（%）</span>
-			        </h3>
-		        </template>
-		        <template slot="chartPart">
-		        	<customer-service-chart-left4 :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></customer-service-chart-left4>
-		        </template>
+		        <card-title slot="titlePart" title="管径类别（%）"></card-title>
+		        <customer-service-chart-left4 slot="chartPart" :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></customer-service-chart-left4>
     		</card-three>
-    		<card :percent="card1.percent" :iconCls="iconCls[3]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>巡检管道</span>
-			          <span>（公里）</span>
-			        </h3>
-			        <div class="totalMoney">
-			          <span class="title">计划</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{card3.currentValue}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">实收</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{card3.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
-		        </template>
+    		<card :percent="card1.percent" percentTitle="完成率" :iconCls="iconCls[3]">
+		        <card-title
+    				slot="titlePart"
+		        	title="巡检管道（公里）"
+		        	subTitle1="计划"
+		        	:value1="card3.currentValue"
+		        	subTitle2="实收"
+		        	:value2="card3.currentValue">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
     		</card>
     		<card :percent="card1.percent" :iconCls="iconCls[4]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>抢修任务</span>
-			          <span>（单）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title">总单数</span>
-			          <span class="strongCount bgc-theme"><b class="fs-20">{{parseInt(card4.currentValue)}}</b></span>
-			        </div>
-			        <div class="liabilityPercent">
-			          <span class="title">已处理</span>
-			          <span class="strongCount bgc-green"><b class="fs-20">{{parseInt(card4.currentValue)}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
-		        </template>
+		        <card-title
+    				slot="titlePart"
+		        	title="抢修任务（单）"
+		        	subTitle1="总单数"
+		        	:value1="parseInt(card4.currentValue)"
+		        	subTitle2="已处理"
+		        	:value2="parseInt(card4.currentValue)">
+		        </card-title>
+		        <chart-money slot="chartPart" :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
     		</card>
 		</div>
 		<div class="map-wrap">
@@ -93,7 +53,7 @@
 				<pipe-chart-right1 :data="card9.list" :legend="card9.legend" v-if="card9.list.length"></pipe-chart-right1>
 				<el-date-picker
 					style="width:100%;margin-bottom:5px;"
-					size="small"
+					size="mini"
 			      v-model="card9.value"
 			      type="daterange"
 			      range-separator="至"
@@ -102,11 +62,11 @@
 			    </el-date-picker>
 				<pipe-chart-right2 :data="card9.list" :legend="card9.legend" v-if="card9.list.length"></pipe-chart-right2>
 			</card-two>
-			<card-two title="设备数量">
-				<manage-chart7 :data="card7.list" :legend="card7.legend" v-if="card7.list.length"></manage-chart7>
+			<card-two title="设备数量（台）">
+				<manage-chart7 :data="card7.list" v-if="card7.list.length"></manage-chart7>
 			</card-two>
 			<card-two title="设备类型">
-				<manage-chart8 :data="card8.list" :legend="card8.legend" v-if="card8.list.length"></manage-chart8>
+				<pipe-chart-right3 :data="card8.list" v-if="card8.list.length"></pipe-chart-right3>
 			</card-two>
 		</div>
 	</div>
@@ -124,6 +84,7 @@
 	]
 	import ChartMoney from './ChartMoney'
 	import Card from './Card'
+	import CardTitle from './CardTitle'
 	import Tab from './Tab'
 	import CardTwo from './CardTwo'
 	import CardThree from './CardThree'
@@ -134,6 +95,7 @@
 	import CustomerServiceChartLeft7 from './CustomerServiceChartLeft7'
 	import PipeChartRight1 from './PipeChartRight1'
 	import PipeChartRight2 from './PipeChartRight2'
+	import PipeChartRight3 from './PipeChartRight3'
 	import ManageChart7 from './ManageChart7'
 	import ManageChart8 from './ManageChart8'
 	import ManageChart9 from './ManageChart9'
@@ -148,6 +110,7 @@
 	    components: {
 	    	ChartMoney,
 	    	Card,
+	    	CardTitle,
 	    	Tab,
 	    	CardTwo,
 	    	CardThree,
@@ -158,6 +121,7 @@
 	    	CustomerServiceChartLeft7,
 	    	PipeChartRight1,
 	    	PipeChartRight2,
+	    	PipeChartRight3,
 	    	ManageChart7,
 	    	ManageChart8,
 	    	ManageChart9,
@@ -224,7 +188,7 @@
 	    	selectChange(newVal) {
 	    		this.curDate = newVal
 	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = parseInt(newVal) - 1
+	    		this.tabData[1].title = newVal - 1
 	    		this.card1.list = []
 	    		this.card2.list = []
 	    		this.card3.list = []
@@ -371,51 +335,3 @@
 	    }
 	}
 </script>
-
-<style scoped lang="less">
-	@import "../assets/less/variable.less";
-	.Pipe {
-		display: flex;
-		.left {
-			display: flex;
-			flex: 1;
-			margin-right: 10px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-			position: relative;
-			.select-wrap {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				.search-year {
-					width: 120px;
-				}
-			}
-			.cards {
-			}
-			.map-wrap {
-				flex: 1;
-				text-align: center;
-				margin-top: 60px;
-			}
-		}
-		.right {
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-between;
-			.carts {
-				// flex: 1;
-				// display: flex;
-			    // flex-direction: column;
-			    // justify-content: space-between;
-			    .card {
-			    	margin-top: 10px;
-			    	&:first-child {
-			    		margin-top: 0;
-			    	}
-			    }
-			}
-		}
-	}
-</style>

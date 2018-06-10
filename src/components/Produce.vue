@@ -1,5 +1,5 @@
 <template>
-  <section class="Produce">
+  <section class="layout-page">
 	<div class="left" :style="getBgImage()">
 		<div class="select-wrap">
 	    	<div class="search-year">
@@ -8,101 +8,32 @@
 	    </div>
 		<div class="cards">
     		<card class="ON" :percent="card1.percent" :iconCls="iconCls[0]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>自来水供水量</span>
-			          <span>（万方）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="自来水供水量（万方）" :value1="card1.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card1.list" :hasMin="card1.hasMin" v-if="card1.list.length"></chart-money>
     		</card>
     		<card :percent="card2.percent" :iconCls="iconCls[1]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>电量</span>
-			          <span>（kwh）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card2.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="电量（kwh）" :value1="card2.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card2.list" :hasMin="card2.hasMin" v-if="card2.list.length"></chart-money>
     		</card>
     		<card :percent="card3.percent" :iconCls="iconCls[2]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>药量</span>
-			          <span>（吨）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card3.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="药量（吨）" :value1="card3.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card3.list" :hasMin="card3.hasMin" v-if="card3.list.length"></chart-money>
     		</card>
     		<card :percent="card4.percent" :iconCls="iconCls[3]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>水质合格率</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card4.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card4.list" v-if="card4.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="水质合格率" :value1="card4.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card4.list" v-if="card4.list.length"></chart-money>
     		</card>
     		<card :iconCls="iconCls[4]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>单方水成本</span>
-			          <span>（元/吨）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card5.list" v-if="card5.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="单方水成本（元/吨）" :value1="card1.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card5.list" v-if="card5.list.length"></chart-money>
     		</card>
     		<card :percent="card6.percent" :iconCls="iconCls[5]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>单方水能耗</span>
-			          <span>（吨）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card6.list" v-if="card6.list.length"></chart-money>
-		        </template>
+    			<card-title slot="titlePart" title="单方水能耗（吨）" :value1="card1.currentValue"></card-title>
+		        <chart-money slot="chartPart" :data="card6.list" v-if="card6.list.length"></chart-money>
     		</card>
     		<card :percent="card6.percent" :iconCls="iconCls[6]">
-    			<template slot="titlePart">
-    				<h3>
-			          <span>自来水药耗</span>
-			          <span>（吨）</span>
-			        </h3>
-	    			<div class="totalMoney">
-			          <span class="title"><b class="fs-20">{{card1.currentValue}}</b></span>
-			        </div>
-		        </template>
-		        <template slot="chartPart">
-		        	<chart-money :data="card6.list" v-if="card6.list.length"></chart-money>
-		        </template>
+		        <card-title slot="titlePart" title="自来水药耗（吨）" :value1="card1.currentValue"></card-title>
+	        	<chart-money slot="chartPart" :data="card6.list" v-if="card6.list.length"></chart-money>
     		</card>
 		</div>
 		<div class="map-wrap">
@@ -112,20 +43,20 @@
 	<div class="right m-content-right">
 		<tab :data="tabData" @tabChange="tabChange"></tab>
 		<div class="carts">
-			<card-two title="六盘山历年供水规模（能力）及供水量统计" height="150">
-				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
+			<card-two title="六盘山历年供水规模（能力）及供水量统计（万吨）" height="206">
+				<customer-service-chart-left6 :data="card5.list" v-if="card5.list.length"></customer-service-chart-left6>
 			</card-two>
-			<card-two title="供水量分析" height="300">
+			<card-two title="供水量分析" height="350">
 				<produce-chart-right2 :data="card9.list" v-if="card9.list.length" height="150"></produce-chart-right2>
-				<produce-chart-right3 :data="card8.list" v-if="card8.list.length" height="150"></produce-chart-right3>
+				<produce-chart-right3 :data="card8.list" v-if="card8.list.length" height="206"></produce-chart-right3>
 			</card-two>
-			<card-two title="单方水成本" height="150">
+			<card-two title="单方水成本（元 / 吨）" height="206">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
-			<card-two title="单方水能耗" height="150">
+			<card-two title="单方水能耗（吨）" height="206">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
-			<card-two title="单方水药耗" height="150">
+			<card-two title="单方水药耗（吨）" height="206">
 				<produce-chart-right1 :data="card7.list" v-if="card7.list.length"></produce-chart-right1>
 			</card-two>
 		</div>
@@ -144,11 +75,13 @@
 	]
 	import ChartMoney from './ChartMoney'
 	import Card from './Card'
+	import CardTitle from './CardTitle'
 	import Tab from './Tab'
 	import CardTwo from './CardTwo'
 	import ProduceChartRight1 from './ProduceChartRight1'
 	import ProduceChartRight2 from './ProduceChartRight2'
 	import ProduceChartRight3 from './ProduceChartRight3'
+	import CustomerServiceChartLeft6 from './CustomerServiceChartLeft6'
 	import {getStaticPath} from '../assets/js/mixin'
 	import MapNx from './MapNx'
 	import SelectYear from './SelectYear'
@@ -159,11 +92,13 @@
 	    components: {
 	    	ChartMoney,
 	    	Card,
+	    	CardTitle,
 	    	Tab,
 	    	CardTwo,
 	    	ProduceChartRight1,
 	    	ProduceChartRight2,
 	    	ProduceChartRight3,
+	    	CustomerServiceChartLeft6,
 	    	MapNx,
 	    	SelectYear
 	    },
@@ -223,7 +158,7 @@
 	    	selectChange(newVal) {
 	    		this.curDate = newVal
 	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = parseInt(newVal) - 1
+	    		this.tabData[1].title = newVal - 1
 	    		this.card1.list = []
 	    		this.card2.list = []
 	    		this.card3.list = []
@@ -372,79 +307,9 @@
 </script>
 
 <style scoped lang="less">
-	@import "../assets/less/variable.less";
-	.Produce {
-		display: flex;
-		.left {
-			display: flex;
-			flex: 1;
-			margin-right: 10px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-			position: relative;
-			.select-wrap {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				.search-year {
-					width: 120px;
-				}
-			}
-			.cards {
-				.card {
-					margin: 15px; 
-					padding: 10px;
-					&.ON {
-				      border: 2px solid @color-theme;
-				    }
-				    h3 {
-				    	margin-bottom: 6px;
-				    }
-				    .totalMoney, .liabilityPercent {
-				    	margin-bottom: 6px;
-				    	.title {
-				    		margin-right: 6px;
-				    	}
-						.title, .strongCount {
-				    		font-weight: bold;
-				    	}
-				    	.strongCount {
-							display: inline-block;
-						    padding: 5px 20px 5px 5px;
-						    border-radius: 0 20px 20px 0;
-						    min-width: 80px;
-							box-sizing: border-box;
-				    	}
-				    }
-				    .totalMoney {
-				    	
-				    	
-				    }
-				}
-			}
-			.map-wrap {
-				flex: 1;
-				text-align: center;
-				margin-top: 60px;
-			}
-		}
-		.right {
-			// display: flex;
-			// flex-direction: column;
-			// justify-content: space-between;
-			.carts {
-				// flex: 1;
-				// display: flex;
-			    // flex-direction: column;
-			    // justify-content: space-between;
-			    .card {
-			    	margin-top: 10px;
-			    	&:first-child {
-			    		margin-top: 0;
-			    	}
-			    }
-			}
+	.cards {
+		.Card {
+			min-height: 160px;
 		}
 	}
 </style>

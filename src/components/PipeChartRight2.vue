@@ -74,6 +74,6 @@ export default {
 
 <style scoped lang="less">
     .highcharts-container {
-        height: 50%;
+        height: 45%;
     }
 </style>

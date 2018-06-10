@@ -34,36 +34,9 @@ export default {
                 text: null
             },
             pane: {
-                startAngle: -150,
-                endAngle: 150,
-                background: [{
-                    backgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0, '#FFF'],
-                            [1, '#333']
-                        ]
-                    },
-                    borderWidth: 0,
-                    outerRadius: '109%'
-                }, {
-                    backgroundColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-                        stops: [
-                            [0, '#333'],
-                            [1, '#FFF']
-                        ]
-                    },
-                    borderWidth: 1,
-                    outerRadius: '107%'
-                }, {
-                        // default background
-                }, {
-                    backgroundColor: '#DDD',
-                    borderWidth: 0,
-                    outerRadius: '105%',
-                    innerRadius: '103%'
-                }]
+                startAngle: -135,
+                endAngle: 135,
+                size: '100%' // 仪表盘的占容器的比例
             },
             // the value axis
             yAxis: {
@@ -77,7 +50,7 @@ export default {
                 tickPixelInterval: 30,
                 tickWidth: 2,
                 tickPosition: 'inside',
-                tickLength: 10,
+                tickLength: 14,
                 tickColor: '#666',
                 labels: {
                     step: 2,
@@ -89,10 +62,10 @@ export default {
                 },
                 plotBands: [{
                     from: 0,
-                    to: 15,
+                    to: 16,
                     color: '#55BF3B' // green
                 }, {
-                    from: 15,
+                    from: 16,
                     to: 30,
                     color: '#DDDF0D' // yellow
                 }, {
@@ -102,10 +75,18 @@ export default {
                 }]
             },
             series: [{
-                name: 'Speed',
+                name: '漏损率',
                 data: [80],
                 tooltip: {
-                    valueSuffix: ' km/h'
+                    valueSuffix: ' %'
+                },
+                dataLabels:{
+                    color:'red',
+                    // style:{"fontSize": "36px"}
+                    y: 65,
+                    formatter: function() {
+                        return this.y.toFixed(2) + "%"
+                    }
                 }
             }]
         }
@@ -116,11 +97,11 @@ export default {
                         newVal,
                         inc = Math.round((Math.random() - 0.5) * 20);
                     newVal = point.y + inc;
-                    if (newVal < 0 || newVal > 200) {
+                    if (newVal < 0 || newVal > 100) {
                         newVal = point.y - inc;
                     }
                     point.update(newVal);
-                }, 3000);
+                }, 2000);
             }
         }
         this.chart = new Highcharts.Chart(this.$el, options, callback)
@@ -131,6 +112,6 @@ export default {
 
 <style scoped lang="less">
     .highcharts-container {
-        height: calc(50% - 32px);
+        height: calc(55% - 28px);
     }
 </style>
