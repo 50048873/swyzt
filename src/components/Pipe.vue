@@ -75,52 +75,27 @@
 
 <script>
 	import ChartMoney from './ChartMoney'
-	import Card from './Card'
-	import CardTitle from './CardTitle'
-	import Tab from './Tab'
-	import CardTwo from './CardTwo'
 	import CardThree from './CardThree'
-	import ProduceChartRight1 from './ProduceChartRight1'
 	import CustomerServiceChartLeft4 from './CustomerServiceChartLeft4'
-	import CustomerServiceChartLeft5 from './CustomerServiceChartLeft5'
-	import CustomerServiceChartLeft6 from './CustomerServiceChartLeft6'
-	import CustomerServiceChartLeft7 from './CustomerServiceChartLeft7'
 	import PipeChartRight1 from './PipeChartRight1'
 	import PipeChartRight2 from './PipeChartRight2'
 	import PipeChartRight3 from './PipeChartRight3'
 	import ManageChart7 from './ManageChart7'
-	import ManageChart8 from './ManageChart8'
-	import ManageChart9 from './ManageChart9'
-	import {getStaticPath} from '../assets/js/mixin'
-	import MapNx from './MapNx'
-	import SelectYear from './SelectYear'
+	import {getStaticPath, parseInt, pageCommon} from '../assets/js/mixin'
 	import * as api from '../assets/js/api'
 	import {getCurrentValue, getTabData} from '../assets/js/util'
-	import {parseInt} from '../assets/js/mixin'
 	export default {
 	    name: 'Pipe',
 	    components: {
 	    	ChartMoney,
-	    	Card,
-	    	CardTitle,
-	    	Tab,
-	    	CardTwo,
 	    	CardThree,
-	    	ProduceChartRight1,
 	    	CustomerServiceChartLeft4,
-	    	CustomerServiceChartLeft5,
-	    	CustomerServiceChartLeft6,
-	    	CustomerServiceChartLeft7,
 	    	PipeChartRight1,
 	    	PipeChartRight2,
 	    	PipeChartRight3,
-	    	ManageChart7,
-	    	ManageChart8,
-	    	ManageChart9,
-	    	MapNx,
-	    	SelectYear
+	    	ManageChart7
 	    },
-	    mixins: [getStaticPath, parseInt],
+	    mixins: [getStaticPath, parseInt, pageCommon],
 	    data() {
 	    	return {
 	    		tabData: getTabData(),
@@ -177,21 +152,6 @@
 	    	}
 	    },
 	    methods: {
-	    	selectChange(newVal) {
-	    		this.curDate = newVal
-	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = newVal - 1
-	    		this.card1.list = []
-	    		this.card2.list = []
-	    		this.card3.list = []
-	    		this.card4.list = []
-	    		this.card5.list = []
-	    		this.card6.list = []
-	    		this.card7.list = []
-	    		this.card8.list = []
-	    		this.card9.list = []
-	    		this.loadData()
-	    	},
 	    	tabChange(index, title) {
 	    		let params = {
 	    			curDate: title

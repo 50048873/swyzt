@@ -3,18 +3,11 @@
 </template>
 
 <script>
-import Highcharts from 'highcharts/highstock';
+import Highcharts from 'highcharts/highstock'
+import {chart} from '../assets/js/mixin'
 
 export default {
-  name: 'PipeChartRight1',
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    this.draw()
-  },
+  mixins: [chart],
   methods: {
     draw() {
         let options = {

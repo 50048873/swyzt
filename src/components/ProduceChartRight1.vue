@@ -3,10 +3,11 @@
 </template>
 
 <script>
-import Highcharts from 'highcharts/highstock';
+import Highcharts from 'highcharts/highstock'
+import {chart} from '../assets/js/mixin'
 
 export default {
-  name: 'ChartColumnarBasic',
+  mixins: [chart],
   props: {
     data: {
         type: Array,
@@ -16,14 +17,6 @@ export default {
         type: Boolean,
         default: false
     }
-  },
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    this.draw()
   },
   methods: {
     draw() {

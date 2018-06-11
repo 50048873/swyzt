@@ -66,35 +66,23 @@
 
 <script>
 	import ChartMoney from './ChartMoney'
-	import Card from './Card'
-	import CardTitle from './CardTitle'
-	import Tab from './Tab'
-	import CardTwo from './CardTwo'
 	import ProduceChartRight1 from './ProduceChartRight1'
 	import ProduceChartRight2 from './ProduceChartRight2'
 	import ProduceChartRight3 from './ProduceChartRight3'
 	import CustomerServiceChartLeft6 from './CustomerServiceChartLeft6'
-	import {getStaticPath} from '../assets/js/mixin'
-	import MapNx from './MapNx'
-	import SelectYear from './SelectYear'
+	import {getStaticPath, pageCommon} from '../assets/js/mixin'
 	import * as api from '../assets/js/api'
 	import {getCurrentValue, getTabData} from '../assets/js/util'
 	export default {
 	    name: 'Produce',
 	    components: {
 	    	ChartMoney,
-	    	Card,
-	    	CardTitle,
-	    	Tab,
-	    	CardTwo,
 	    	ProduceChartRight1,
 	    	ProduceChartRight2,
 	    	ProduceChartRight3,
-	    	CustomerServiceChartLeft6,
-	    	MapNx,
-	    	SelectYear
+	    	CustomerServiceChartLeft6
 	    },
-	    mixins: [getStaticPath],
+	    mixins: [getStaticPath, pageCommon],
 	    data() {
 	    	return {
 	    		tabData: getTabData(),
@@ -147,21 +135,6 @@
 	    	}
 	    },
 	    methods: {
-	    	selectChange(newVal) {
-	    		this.curDate = newVal
-	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = newVal - 1
-	    		this.card1.list = []
-	    		this.card2.list = []
-	    		this.card3.list = []
-	    		this.card4.list = []
-	    		this.card5.list = []
-	    		this.card6.list = []
-	    		this.card7.list = []
-	    		this.card8.list = []
-	    		this.card9.list = []
-	    		this.loadData()
-	    	},
 	    	tabChange(index, title) {
 	    		let params = {
 	    			curDate: title

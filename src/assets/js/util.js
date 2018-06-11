@@ -73,3 +73,7 @@ export function getTabData() {
       }
   ]
 }
+
+export function _getStaticPath(url) { 
+  return url
+}

@@ -1,6 +1,5 @@
 <template>
   <section class="layout-page">
-  	<div style="position:absolute;top:200px;left:0;width:130px;">{{card1.list}}</div>
 	<div class="left" :style="getBgImage()">
 		<div class="select-wrap">
 	    	<div class="search-year">
@@ -83,33 +82,21 @@
 
 <script>
 	import ChartMoney from './ChartMoney'
-	import Card from './Card'
-	import CardTitle from './CardTitle'
-	import Tab from './Tab'
-	import CardTwo from './CardTwo'
 	import ManageChart7 from './ManageChart7'
 	import ManageChart8 from './ManageChart8'
 	import ManageChart9 from './ManageChart9'
-	import {getStaticPath} from '../assets/js/mixin'
-	import MapNx from './MapNx'
-	import SelectYear from './SelectYear'
+	import {getStaticPath, pageCommon} from '../assets/js/mixin'
 	import * as api from '../assets/js/api'
 	import {getCurrentValue, getTabData} from '../assets/js/util'
 	export default {
 	    name: 'Manage',
 	    components: {
 	    	ChartMoney,
-	    	Card,
-	    	CardTitle,
-	    	Tab,
-	    	CardTwo,
 	    	ManageChart7,
 	    	ManageChart8,
-	    	ManageChart9,
-	    	MapNx,
-	    	SelectYear
+	    	ManageChart9
 	    },
-	    mixins: [getStaticPath],
+	    mixins: [getStaticPath, pageCommon],
 	    data() {
 	    	return {
 	    		tabData: getTabData(),
@@ -165,33 +152,12 @@
 	    	}
 	    },
 	    methods: {
-	    	handleItem(item) {
-	    		console.log(item)
-	    	},
-	    	selectChange(newVal) {
-	    		this.curDate = newVal
-	    		this.tabData[0].title = newVal
-	    		this.tabData[1].title = newVal - 1
-	    		// this.card1.list = []
-	    		// this.card2.list = []
-	    		// this.card3.list = []
-	    		// this.card4.list = []
-	    		// this.card5.list = []
-	    		// this.card6.list = []
-	    		// this.card7.list = []
-	    		// this.card8.list = []
-	    		// this.card9.list = []
-	    		this.loadData()
-	    	},
 	    	tabChange(index, title) {
 	    		let params = {
 	    			curDate: title
 	    		}
 	    		this.get_7(params)
 	    	},
-		    getBgImage() {
-		    	return {backgroundImage: `url(${this.getStaticPath('/static/img/bg.jpg')})`}
-		    },
 		    initParam() {
 	    		this.iconCls = ['nxst-money', 'nxst-fzze', 'nxst-jzc', 'nxst-money', 'nxst-lrzr', 'nxst-tz']
 		    },

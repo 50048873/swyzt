@@ -12,18 +12,17 @@
 
 <script>
 import $ from 'jquery'
-import {getStaticPath} from '../assets/js/mixin'
 import * as api from '../assets/js/api'
-import {throttle} from '../assets/js/util'
+import {throttle, _getStaticPath} from '../assets/js/util'
 export default {
   name: 'MapNx',
-  mixins: [getStaticPath],
   data() {
     return {
       list: []
     }
   },
   methods: {
+    getStaticPath: _getStaticPath,
     handleItem(item) {
       this.$emit('handleItem', item)
     },

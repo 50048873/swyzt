@@ -4,19 +4,12 @@
 
 <script>
 import Highcharts from 'highcharts/highstock';
-import * as HighchartsMore from 'highcharts/highcharts-more.js';
-HighchartsMore(Highcharts);
+import * as HighchartsMore from 'highcharts/highcharts-more.js'
+HighchartsMore(Highcharts)
+import {chart} from '../assets/js/mixin'
 
 export default {
-  name: 'PipeChartRight1',
-  data() {
-    return {
-      chart: null
-    }
-  },
-  mounted() {
-    this.draw()
-  },
+  mixins: [chart],
   methods: {
     draw() {
         let options = {
