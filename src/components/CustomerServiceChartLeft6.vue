@@ -1,5 +1,5 @@
 <template>
-  <div class="highcharts-container"></div>
+  <div class="highcharts-wrap"></div>
 </template>
 
 <script>
@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .highcharts-container {
+    .highcharts-wrap {
         height: 100%;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="highcharts-container"></div>
+  <div class="highcharts-wrap"></div>
 </template>
 
 <script>
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .highcharts-container {
+    .highcharts-wrap {
         position: absolute;
         right: 0;
         bottom: 0;
