@@ -11,21 +11,13 @@ export function isString(str) {
 }
 
 export function handleChartClick(obj) {
-	this.$alert(`<div><span>${obj.category}</span><span>${obj.y}</span></div>`, 'HTML 片段', {
+	this.$alert(`<div><p>${obj.category}</p><p>${obj.y}</p></div>`, '标题', {
       dangerouslyUseHTMLString: true
     }).then((res) => {
       console.log(res)
     }).catch((res) => {
       console.log(res)
     });
-    /*layer.open({
-        title: '标题',
-        type: 1,
-        anim: 0,
-        area: ['500px', '300px'],
-        shadeClose: true, 
-        content: `<div><span>${this.category}</span><span>${this.y}</span></div>`
-    });*/
 }
 
 export function handleError(err) {

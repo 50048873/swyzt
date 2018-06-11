@@ -70,12 +70,15 @@ export default {
       }
     },
     getPosition(item) {
-      let imgOriginW = 763,
+      let imgOriginW = 783,
           imgW = $(this.$refs.map).width(),
-          radio = imgW / imgOriginW
+          radio = imgW / imgOriginW,
+          screenW = window.innerWidth,
+          iconH = 27
       return {
         top: item.y * radio + 'px',
-        left: item.x * radio + 'px'
+        left: item.x * radio + 'px',
+        marginTop: -iconH + 'px'
       }
     },
     get_company() {
@@ -111,10 +114,12 @@ export default {
     .tip {
       position: absolute;
       cursor: pointer;
+      margin-top: -27px;
       .iconWrap {
         position: absolute;
-        width: 16px;
         z-index: 1;
+        width: 16px;
+        transform-origin: center bottom;
       }
       .des {
         position: absolute;
@@ -132,12 +137,28 @@ export default {
         }
         p {
           font-size: 10px;
-          white-space: nowrap;
         }
         &.reverse {
           position: relative;
           left: -100%;
           margin-right: -10px;
+        }
+      }
+      @media (min-width: 1440px) {
+        .iconWrap {
+          transform: scale(1.25);
+        }
+      }
+
+      @media (min-width: 1600px) {
+        .iconWrap {
+          transform: scale(1.375);
+        }
+      }
+
+      @media (min-width: 1920px) {
+        .iconWrap {
+          transform: scale(1.625);
         }
       }
       &:hover {
@@ -152,7 +173,7 @@ export default {
         }
         .iconWrap {
           transform-origin: center bottom;
-          transform: scale(1.5);
+          transform: scale(2);
         }
       }
     }
