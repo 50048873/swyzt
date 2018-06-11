@@ -65,14 +65,6 @@
 </template>
 
 <script>
-	const tabData = [
-	    {
-	      title: '2017'
-	    },
-	    {
-	      title: '2016'
-	    }
-	]
 	import ChartMoney from './ChartMoney'
 	import Card from './Card'
 	import CardTitle from './CardTitle'
@@ -86,7 +78,7 @@
 	import MapNx from './MapNx'
 	import SelectYear from './SelectYear'
 	import * as api from '../assets/js/api'
-	import {getCurrentValue} from '../assets/js/util'
+	import {getCurrentValue, getTabData} from '../assets/js/util'
 	export default {
 	    name: 'Produce',
 	    components: {
@@ -105,7 +97,7 @@
 	    mixins: [getStaticPath],
 	    data() {
 	    	return {
-	    		tabData: tabData,
+	    		tabData: getTabData(),
 	    		curDate: '2017',
 	    		card1: {
 	    			percent: '',

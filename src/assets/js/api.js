@@ -5,7 +5,7 @@ import {handleError} from './util'
 export function get_1(params) {
 	return $.ajax({
 		type: 'GET',
-		url: baseUrl + '/static/data/1.json',
+		url: baseUrl + '/static/data/manage/1.json',
 		data: params
 	}).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -21,7 +21,7 @@ export function get_1(params) {
 export function get_2(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/2.json',
+    url: baseUrl + '/static/data/manage/2.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -37,7 +37,7 @@ export function get_2(params) {
 export function get_3(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/3.json',
+    url: baseUrl + '/static/data/manage/3.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -53,7 +53,7 @@ export function get_3(params) {
 export function get_4(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/4.json',
+    url: baseUrl + '/static/data/manage/4.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -69,7 +69,7 @@ export function get_4(params) {
 export function get_5(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/5.json',
+    url: baseUrl + '/static/data/manage/5.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -85,7 +85,7 @@ export function get_5(params) {
 export function get_6(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/6.json',
+    url: baseUrl + '/static/data/manage/6.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -101,7 +101,7 @@ export function get_6(params) {
 export function get_7(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/7.json',
+    url: baseUrl + '/static/data/manage/7.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -117,7 +117,7 @@ export function get_7(params) {
 export function get_8(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/8.json',
+    url: baseUrl + '/static/data/manage/8.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -133,7 +133,7 @@ export function get_8(params) {
 export function get_9(params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/9.json',
+    url: baseUrl + '/static/data/manage/9.json',
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {

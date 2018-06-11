@@ -1,5 +1,6 @@
 <template>
   <section class="layout-page">
+  	<div style="position:absolute;top:200px;left:0;width:130px;">{{card1.list}}</div>
 	<div class="left" :style="getBgImage()">
 		<div class="select-wrap">
 	    	<div class="search-year">
@@ -60,7 +61,7 @@
     		</card>
 		</div>
 		<div class="map-wrap">
-			<map-nx></map-nx>
+			<map-nx @handleItem="handleItem"></map-nx>
 		</div>
 	</div>
 	<div class="right m-content-right">
@@ -81,14 +82,6 @@
 </template>
 
 <script>
-	const tabData = [
-	    {
-	      title: '2017'
-	    },
-	    {
-	      title: '2016'
-	    }
-	]
 	import ChartMoney from './ChartMoney'
 	import Card from './Card'
 	import CardTitle from './CardTitle'
@@ -101,7 +94,7 @@
 	import MapNx from './MapNx'
 	import SelectYear from './SelectYear'
 	import * as api from '../assets/js/api'
-	import {getCurrentValue} from '../assets/js/util'
+	import {getCurrentValue, getTabData} from '../assets/js/util'
 	export default {
 	    name: 'Manage',
 	    components: {
@@ -119,7 +112,7 @@
 	    mixins: [getStaticPath],
 	    data() {
 	    	return {
-	    		tabData: tabData,
+	    		tabData: getTabData(),
 	    		curDate: '2017',
 	    		card1: {
 	    			percent: '',
@@ -172,19 +165,22 @@
 	    	}
 	    },
 	    methods: {
+	    	handleItem(item) {
+	    		console.log(item)
+	    	},
 	    	selectChange(newVal) {
 	    		this.curDate = newVal
 	    		this.tabData[0].title = newVal
 	    		this.tabData[1].title = newVal - 1
-	    		this.card1.list = []
-	    		this.card2.list = []
-	    		this.card3.list = []
-	    		this.card4.list = []
-	    		this.card5.list = []
-	    		this.card6.list = []
-	    		this.card7.list = []
-	    		this.card8.list = []
-	    		this.card9.list = []
+	    		// this.card1.list = []
+	    		// this.card2.list = []
+	    		// this.card3.list = []
+	    		// this.card4.list = []
+	    		// this.card5.list = []
+	    		// this.card6.list = []
+	    		// this.card7.list = []
+	    		// this.card8.list = []
+	    		// this.card9.list = []
 	    		this.loadData()
 	    	},
 	    	tabChange(index, title) {

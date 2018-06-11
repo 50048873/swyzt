@@ -1,7 +1,7 @@
 <template>
   <div class="MapNx">
     <img ref="map" class="m-nx-map" :src="getStaticPath('/static/img/map.png')" alt="map.png">
-    <div class="tip" v-for="item in list" :style="getPosition(item)">
+    <div class="tip" v-for="item in list" :style="getPosition(item)" @click="handleItem(item)">
       <div class="iconWrap"><img :src="getIcon(item.percent)" alt=""></div>
       <div class="des" :class="getReverse(item.reverse)">
         <div v-html="getTitle(item.adunnm)"></div>
@@ -24,6 +24,9 @@ export default {
     }
   },
   methods: {
+    handleItem(item) {
+      this.$emit('handleItem', item)
+    },
     getReverse(flag) {
       return flag ? 'reverse' : ''
     },

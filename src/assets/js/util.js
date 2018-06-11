@@ -62,3 +62,14 @@ export function throttle(fn, context, time) {
         fn.call(context)
     }, time || 200)
 }
+
+export function getTabData() {
+  return [
+      {
+        title: '2017'
+      },
+      {
+        title: '2016'
+      }
+  ]
+}

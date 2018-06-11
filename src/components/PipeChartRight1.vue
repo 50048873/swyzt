@@ -113,5 +113,6 @@ export default {
 <style scoped lang="less">
     .highcharts-container {
         height: calc(55% - 28px);
+        max-height: 165px;
     }
 </style>
