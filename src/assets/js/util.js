@@ -1,3 +1,5 @@
+import {path} from './config'
+
 export let toString = Object.prototype.toString
 
 export function isArray (arr) {
@@ -65,5 +67,8 @@ export function getTabData () {
 }
 
 export function _getStaticPath (url) {
-  return url
+  if (process.env.NODE_ENV === 'development') {
+    return url
+  }
+  return path + url
 }

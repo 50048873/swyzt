@@ -8,7 +8,7 @@ import Pipe from '../components/Pipe.vue'
 Vue.use(Router)
 
 let router = new Router({
-  // base: '/src/vue',
+  // base: '/5ds/swyzt',
   mode: 'history',
   linkActiveClass: 'ON',
   routes: [
@@ -35,6 +35,10 @@ let router = new Router({
       path: '/pipe',
       name: 'pipe',
       component: Pipe
+    },
+    {
+      path: '*',
+      redirect: '/manage'
     }
   ]
 })

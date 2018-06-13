@@ -1,11 +1,11 @@
 import $ from 'jquery'
-import {baseUrl, success} from './config'
+import {baseUrl, success, path} from './config'
 import {handleError} from './util'
 
 export function get1 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/1.json',
+    url: getPath('manage/', 1),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -24,7 +24,7 @@ export function get1 (params) {
 export function get2 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/2.json',
+    url: getPath('manage/', 2),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -43,7 +43,7 @@ export function get2 (params) {
 export function get3 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/3.json',
+    url: getPath('manage/', 3),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -62,7 +62,7 @@ export function get3 (params) {
 export function get4 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/4.json',
+    url: getPath('manage/', 4),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -81,7 +81,7 @@ export function get4 (params) {
 export function get5 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/5.json',
+    url: getPath('manage/', 5),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -100,7 +100,7 @@ export function get5 (params) {
 export function get6 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/6.json',
+    url: getPath('manage/', 6),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -119,7 +119,7 @@ export function get6 (params) {
 export function get7 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/7.json',
+    url: getPath('manage/', 7),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -138,7 +138,7 @@ export function get7 (params) {
 export function get8 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/8.json',
+    url: getPath('manage/', 8),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -157,7 +157,7 @@ export function get8 (params) {
 export function get9 (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/manage/9.json',
+    url: getPath('manage/', 9),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.list.length) {
@@ -176,7 +176,7 @@ export function get9 (params) {
 export function getCompany (params) {
   return $.ajax({
     type: 'GET',
-    url: baseUrl + '/static/data/company.json',
+    url: getPath('', 'company'),
     data: params
   }).then((res) => {
     if (res.status === success && res.data.length) {
@@ -220,4 +220,11 @@ function getDataByYear2 (data, params) {
   return {
     list: []
   }
+}
+
+function getPath (subPath, filename) {
+  if (process.env.NODE_ENV === 'development') {
+    return baseUrl + `/static/data/${subPath}${filename}.json`
+  }
+  return baseUrl + path + `/static/data/${subPath}${filename}.json`
 }

@@ -156,9 +156,6 @@ export default {
       }
       this.get7(params)
     },
-    getBgImage () {
-      return {backgroundImage: `url(${this.getStaticPath('/static/img/bg.jpg')})`}
-    },
     initParam () {
       this.iconCls = ['nxst-yssssl', 'nxst-money', 'nxst-money', 'nxst-ysjgdb', 'nxst-yshs']
     },
