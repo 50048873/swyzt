@@ -9,53 +9,53 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
-    props: {
-      radius: {
-        type: [Number, String],
-        default: 100
-      },
-      percent: {
-        type: Number,
-        default: 0
-      }
+export default {
+  props: {
+    radius: {
+      type: [Number, String],
+      default: 100
     },
-    data() {
-      return {
-        dashArray: Math.PI * 100
+    percent: {
+      type: Number,
+      default: 0
+    }
+  },
+  data () {
+    return {
+      dashArray: Math.PI * 100
+    }
+  },
+  computed: {
+    dashOffset () {
+      if (isNaN(this.percent)) {
+        return this.dashArray
       }
-    },
-    computed: {
-      dashOffset() {
-        if (isNaN(this.percent)) {
-          return this.dashArray
-        }
-        let percent = (1 - parseFloat(this.percent))
-        percent = percent < 0 ? 0 : percent
-        return percent * this.dashArray
-      }
+      let percent = (1 - parseFloat(this.percent))
+      percent = percent < 0 ? 0 : percent
+      return percent * this.dashArray
     }
   }
+}
 </script>
 
 <style scoped lang="less">
-  @import "../assets/less/variable.less";
-  .progress-circle {
-    position: relative;
-    svg {
-      overflow: visible;
-      transform: rotate(-90deg);
-      circle {
-        stroke-width: 8px;
-        transform-origin: center;
-        transform: scale(0.9);
-        &.progress-background {
-          stroke: #d1d1d1;
-        }
-        &.progress-bar {
-          stroke: @color-orange;
-        }
+@import "../assets/less/variable.less";
+.progress-circle {
+  position: relative;
+  svg {
+    overflow: visible;
+    transform: rotate(-90deg);
+    circle {
+      stroke-width: 8px;
+      transform-origin: center;
+      transform: scale(0.9);
+      &.progress-background {
+        stroke: #d1d1d1;
+      }
+      &.progress-bar {
+        stroke: @color-orange;
       }
     }
   }
+}
 </style>

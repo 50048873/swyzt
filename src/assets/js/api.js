@@ -1,24 +1,27 @@
 import $ from 'jquery'
-import {baseUrl, path, success} from './config'
+import {baseUrl, success} from './config'
 import {handleError} from './util'
 
-export function get_1(params) {
-	return $.ajax({
-		type: 'GET',
-		url: baseUrl + '/static/data/manage/1.json',
-		data: params
-	}).then((res) => {
+export function get1 (params) {
+  return $.ajax({
+    type: 'GET',
+    url: baseUrl + '/static/data/manage/1.json',
+    data: params
+  }).then((res) => {
     if (res.status === success && res.data.list.length) {
       return getDataByYear(res.data, params)
     } else {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_2(params) {
+export function get2 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/2.json',
@@ -30,11 +33,14 @@ export function get_2(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_3(params) {
+export function get3 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/3.json',
@@ -46,11 +52,14 @@ export function get_3(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_4(params) {
+export function get4 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/4.json',
@@ -62,11 +71,14 @@ export function get_4(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_5(params) {
+export function get5 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/5.json',
@@ -78,11 +90,14 @@ export function get_5(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_6(params) {
+export function get6 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/6.json',
@@ -94,11 +109,14 @@ export function get_6(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_7(params) {
+export function get7 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/7.json',
@@ -110,11 +128,14 @@ export function get_7(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_8(params) {
+export function get8 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/8.json',
@@ -126,11 +147,14 @@ export function get_8(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_9(params) {
+export function get9 (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/manage/9.json',
@@ -142,11 +166,14 @@ export function get_9(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-export function get_company(params) {
+export function getCompany (params) {
   return $.ajax({
     type: 'GET',
     url: baseUrl + '/static/data/company.json',
@@ -158,17 +185,19 @@ export function get_company(params) {
       handleError('无数据')
     }
   }, (err) => {
+    if (err) {
+      console.log(err)
+    }
     handleError('服务器错误')
   })
 };
 
-function getDataByYear(data, params) {
+function getDataByYear (data, params) {
   let res = {},
-      list = data.list,
-      len = list.length,
-      i = len - 1,
-      index = -1,
-      start = 0
+    list = data.list,
+    len = list.length,
+    i = len - 1,
+    start = 0
   while (i >= 0) {
     if (list[i].curDate.indexOf(params.curDate) > -1) {
       break
@@ -184,7 +213,7 @@ function getDataByYear(data, params) {
   return res
 }
 
-function getDataByYear2(data, params) {
+function getDataByYear2 (data, params) {
   if (data.curDate.indexOf(params.curDate) > -1) {
     return data
   }

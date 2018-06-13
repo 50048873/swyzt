@@ -46,10 +46,10 @@ export default {
     }
   },
   computed: {
-    percentToString() {
-      return this.percent == 0 ? '--' : this.percent 
+    percentToString () {
+      return this.percent === 0 ? '--' : this.percent
     },
-    percentToNumber() {
+    percentToNumber () {
       return parseFloat(this.percent) / 100
     }
   }
@@ -57,48 +57,48 @@ export default {
 </script>
 
 <style scoped lang="less">
-  @import "../assets/less/variable.less";
-  .Card {
+@import "../assets/less/variable.less";
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 270px;
+  min-height: 170px;
+  box-sizing: border-box;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  overflow: auto;
+  margin: 15px;
+  padding: 10px;
+  .top {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 270px;
-    min-height: 170px;
-    box-sizing: border-box;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
-    background-color: white;
-    overflow: auto;
-    margin: 15px; 
-    padding: 10px;
-    .top {
-      display: flex;
-      .top-left {
-        flex: 1;
-        padding-right: 10px;
-        h3 {
-          margin-bottom: 6px;
-        }
-      }
-      .top-right {
-        transform: scale(0.9);
-        transform-origin: top center;
-        text-align: center;
-        .percent {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 12px;
-        }
-        .percent-title {
-          display: inline-block;
-          line-height: 1;
-        }
+    .top-left {
+      flex: 1;
+      padding-right: 10px;
+      h3 {
+        margin-bottom: 6px;
       }
     }
-    .bottom {
-      display: flex;
-      align-items: baseline;
+    .top-right {
+      transform: scale(0.9);
+      transform-origin: top center;
+      text-align: center;
+      .percent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+      }
+      .percent-title {
+        display: inline-block;
+        line-height: 1;
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    align-items: baseline;
       // margin-top: 10px;
       .icon-wrap {
         width: 60px;
@@ -110,9 +110,9 @@ export default {
         flex: 1;
         height: 50px;
       }
-    } 
+    }
     &.ON {
       border: 2px solid @color-theme;
     }
   }
-</style>
+  </style>
