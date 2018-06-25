@@ -2,11 +2,11 @@
   <div class="CartTitle">
     <h3>{{title}}</h3>
     <div>
-      <span class="title" v-if="subTitle1">{{subTitle1}}</span>
+      <span class="title" v-if="subTitle1" v-html="subTitle1"></span>
       <span :class="getValue1Class" v-if="value1">{{value1}}</span>
     </div>
     <div>
-      <span class="title" v-if="subTitle2">{{subTitle2}}</span>
+      <span class="title" v-if="subTitle2" v-html="subTitle2"></span>
       <span :class="getValue2Class" v-if="value2">{{value2}}</span>
     </div>
   </div>
